@@ -1,0 +1,267 @@
+{
+  "LOGIN": {
+    "TITLE": "Connexion",
+    "USERNAME": "Nom d'utilisateur",
+    "PASSWORD": "Mot de passe",
+    "BUTTON": "Se connecter",
+    "ERROR": "Identifiants incorrects (admin / admin)",
+    "LANGUAGE": "Langue"
+  },
+  "NAV": {
+    "DASHBOARD": "Tableau de Bord",
+    "BY_CLIENT": "Par Client",
+    "BY_IMMAT": "Par Immatriculation",
+    "FICHES": "Fiches Techniques",
+    "ADD_CLIENT": "Nouveau Client",
+    "LOGOUT": "Déconnexion"
+  },
+  "ACTIONS": {
+    "VIEW_PROFILE": "Voir Profil",
+    "VIEW_FICHE": "Voir Fiche",
+    "ADD_FICHE": "Nouvelle Fiche",
+    "EDIT": "Modifier",
+    "DELETE": "Supprimer",
+    "VIEW_CLIENT_PROFILE": "Voir Profil Client"
+  },
+  "DASHBOARD": {
+    "STATS": {
+      "TOTAL_CLIENTS": "Total Clients",
+      "ACTIVE_VEHICLES": "Véhicules Actifs",
+      "TECH_SHEETS": "Fiches Techniques"
+    },
+    "RECENT_FICHES": "Fiches Récentes",
+    "TABLE": {
+      "VEHICLE": "Véhicule",
+      "DATE_DIAG": "Date Diagnostic",
+      "SEVERITY": "Gravité",
+      "STATUS": "Statut",
+      "ACTION": "Action"
+    },
+    "MANAGE_CLIENTS": "Gérer les clients",
+    "EXPLORE_FLEET": "Explorer le parc",
+    "VIEW_FICHES": "Voir les fiches",
+    "NO_RECENT_FICHES": "Aucune fiche récente à afficher"
+  },
+  "SEARCH": {
+    "TITLE": "Recherche",
+    "NEW_CLIENT": "Nouveau Client",
+    "BY_CLIENT_TAB": "Recherche par Client",
+    "BY_VEHICLE_TAB": "Recherche par Véhicule",
+    "PLACEHOLDER_CLIENT": "Nom, Prénom...",
+    "BUTTON_SEARCH": "Rechercher",
+    "CLIENT_RESULTS": "Résultats Clients",
+    "VEHICLE_RESULTS": "Résultats Véhicules",
+    "ASSOCIATED_VEHICLES": "Véhicules associés:",
+    "PAGINATION": {
+      "SHOWING": "Affichage de",
+      "TO": "à",
+      "OF": "sur",
+      "RESULTS": "résultats"
+    },
+    "NO_RESULTS": "Aucun résultat trouvé."
+  },
+  "VISITE_LIST": {
+    "TITLE": "Liste des Fiches Techniques",
+    "PLACEHOLDER_SEARCH": "Rechercher par immatriculation, marque, modèle ou client...",
+    "TABLE": {
+      "IMMAT": "Immatriculation",
+      "VEHICLE": "Véhicule",
+      "DATE": "Date",
+      "SEVERITY": "Gravité",
+      "STATUS": "Statut"
+    },
+    "NO_FICHES": "Aucune fiche technique trouvée."
+  },
+  "VISITE_DETAIL": {
+    "BACK": "RETOUR",
+    "TITLE": "Fiche Technique",
+    "ID": "ID",
+    "PRINT": "Imprimer",
+    "MODIFY": "Modifier",
+    "DELETE": "Supprimer",
+    "STATUS": "Statut",
+    "SEVERITY": "Gravité",
+    "VEHICLE": "Véhicule",
+    "DATE_DIAG": "Date Diagnostic",
+    "REPAIRED_ON": "Réparé le:",
+    "COMPONENTS_STATE": "État des Composants",
+    "ENGINE": "Moteur",
+    "BRAKES": "Freins",
+    "SUSPENSION": "Suspension",
+    "ELECTRIC": "Électrique",
+    "BODY": "Carrosserie",
+    "GENERAL_STATE": "État Général",
+    "IDENTIFIED_PANNE": "Pannes Identifiées",
+    "DIAG_DESC": "Description du Diagnostic",
+    "CHANGED_PARTS": "Pièces Changées",
+    "COSTS": "Coûts",
+    "PARTS_COST": "Pièces",
+    "LABOR_COST": "Main d'œuvre",
+    "TOTAL": "Total",
+    "ESTIMATED_DURATION": "Durée estimée:",
+    "MECHANIC_OBSERVATION": "Observation du Mécanicien",
+    "FOOTNOTE_1": "Fiche technique générée automatiquement.",
+    "FOOTNOTE_2": "Document à valeur informative.",
+    "LOADING": "Chargement de la fiche..."
+  },
+  "VEHICLE_DETAIL": {
+    "TITLE": "Fiche Véhicule",
+    "SUBTITLE": "Détails et historique des visites",
+    "OWNER": "Propriétaire",
+    "GENERAL_INFO": "Informations Générales",
+    "TYPE_FUEL": "Type / Carburant",
+    "CHASSIS_YEAR": "Châssis / Année",
+    "POWER_COUNTER": "Puissance Fiscale / Compteur",
+    "HISTORY": "Historique des Fiches",
+    "NO_HISTORY": "Aucune fiche technique enregistrée pour ce véhicule.",
+    "DETAILS": "Détails",
+    "BACK": "Retour",
+    "LOADING": "Chargement...",
+    "CONFIRM_DELETE": "Êtes-vous sûr de vouloir supprimer ce véhicule ? Toutes ses visites seront également supprimées."
+  },
+  "CLIENT_DETAIL": {
+    "TITLE": "Profil Client",
+    "SUBTITLE": "Gestion des informations et du parc automobile",
+    "NO_CIN": "Pas de CIN",
+    "PHONE": "Téléphone",
+    "EMAIL": "Email",
+    "ADDRESS": "Adresse",
+    "NO_ADDRESS": "Aucune adresse renseignée",
+    "ASSOCIATED_VEHICLES": "Véhicules Associés",
+    "ADD_VEHICLE": "+ Ajouter Véhicule",
+    "NO_VEHICLES": "Aucun véhicule enregistré pour ce client.",
+    "LOADING": "Chargement du client...",
+    "MODIFY": "Modifier",
+    "DELETE": "Supprimer",
+    "BACK": "Retour",
+    "CONFIRM_DELETE": "Êtes-vous sûr de vouloir supprimer ce client ? Tous ses véhicules et visites seront également supprimés."
+  },
+  "CLIENT_FORM": {
+    "TITLE_ADD": "Ajouter un Nouveau Client",
+    "TITLE_EDIT": "Modifier le Client",
+    "CANCEL": "Annuler",
+    "NOM": "Nom",
+    "PRENOM": "Prénom",
+    "CIN": "CIN",
+    "PHONE": "Téléphone",
+    "EMAIL": "Email",
+    "ADDRESS": "Adresse",
+    "SAVE": "Enregistrer le Client"
+  },
+  "VEHICLE_FORM": {
+    "TITLE_ADD": "Ajouter un Véhicule",
+    "TITLE_EDIT": "Modifier le Véhicule",
+    "FOR": "Enregistrement pour:",
+    "BRAND": "Marque",
+    "MODEL": "Modèle",
+    "TYPE": "Type Véhicule",
+    "FUEL": "Carburant",
+    "YEAR": "Année de mise en circulation",
+    "CHASSIS": "Numéro de Châssis",
+    "POWER": "Puissance Fiscale (CV)",
+    "SAVE": "Enregistrer le Véhicule",
+    "TYPES": {
+      "TOURISME": "Tourisme",
+      "UTILITAIRE": "Utilitaire",
+      "4X4": "4x4",
+      "CAMIONNETTE": "Camionnette"
+    },
+    "FUELS": {
+      "DIESEL": "Diesel",
+      "ESSENCE": "Essence",
+      "HYBRIDE": "Hybride",
+      "ELECTRIQUE": "Electrique"
+    }
+  },
+  "VISITE_FORM": {
+    "TITLE_ADD": "Nouvelle Fiche Technique",
+    "TITLE_EDIT": "Modifier la Fiche",
+    "SECTION_1": "1. Informations de base",
+    "KM": "Kilométrage",
+    "SEVERITY": "Gravité",
+    "REPARABLE": "Réparable",
+    "SECTION_2": "2. État des Composants",
+    "SECTION_3": "3. Pannes Identifiées",
+    "ADD_FAULT": "Ajouter une panne...",
+    "DIAG_DESC_LABEL": "Description du Diagnostic",
+    "DIAG_DESC_PLACEHOLDER": "Décrivez le diagnostic...",
+    "SECTION_4": "4. Pièces Changées",
+     "ADD_PART": "Ajouter une pièce...",
+    "SELECT_PART": "Sélectionner une pièce",
+    "SECTION_5": "5. Coûts & Durée",
+    "PARTS_COST": "Coût Pièces (DH)",
+    "LABOR_COST": "Coût Main d'œuvre (DH)",
+    "DURATION": "Durée (heures)",
+    "SECTION_6": "6. Statut Final",
+    "OBSERVATION_LABEL": "Observation du Mécanicien",
+    "OBSERVATION_PLACEHOLDER": "Notes et observations...",
+    "VALIDATE": "Valider la Fiche",
+    "CANCEL": "Annuler"
+  },
+  "COMMON": {
+    "STATUS": {
+      "EN_COURS": "En cours",
+      "REPARE": "Réparé",
+      "A_REVOIR": "À revoir",
+      "NON_REPARABLE": "Non réparable"
+    },
+    "SEVERITY": {
+      "MINEURE": "Mineure",
+      "MAJEURE": "Majeure",
+      "CRITIQUE": "Critique",
+      "NA": "N/A"
+    },
+    "ETAT": {
+        "BON": "Bon",
+        "MOYEN": "Moyen",
+        "MAUVAIS": "Mauvais"
+    },
+    "YES": "Oui",
+    "NO": "Non",
+    "ERROR_DELETE": "Erreur lors de la suppression",
+    "ERROR_SAVE": "Erreur lors de l'enregistrement",
+    "ERROR_FETCH": "Erreur lors de la récupération des données",
+    "VERSION": "Version",
+    "PAGINATION": {
+      "PREVIOUS": "Précédent",
+      "NEXT": "Suivant"
+    },
+    "FAULTS": {
+      "PANNE_MOTEUR": "Panne Moteur",
+      "FUITE_HUILE": "Fuite d'Huile",
+      "USURE_FREINS": "Usure des Freins",
+      "PROBLEME_SUSPENSION": "Problème de Suspension",
+      "DEFAUT_ELECTRIQUE": "Défaut Électrique",
+      "CORROSION_CHASSIS": "Corrosion Châssis",
+      "PNEUMATIQUES_USES": "Pneumatiques Usés",
+      "EMBRAYAGE_FATIGUE": "Embrayage Fatigué",
+      "BATTERIE_FAIBLE": "Batterie Faible",
+      "SYSTEME_ECHAPPEMENT": "Système d'Échappement",
+      "ECLAIRAGE_DEFECTUEUX": "Éclairage Défectueux",
+      "DIRECTION_ASSISTEE": "Direction Assistée",
+      "REFROIDISSEMENT_MOTEUR": "Refroidissement Moteur",
+      "FREIN_A_MAIN_FAIBLE": "Frein à Main Faible"
+    },
+    "PARTS": {
+      "PLAQUETTES_FREIN": "Plaquettes de Frein",
+      "DISQUES_FREIN": "Disques de Frein",
+      "FILTRE_HUILE": "Filtre à Huile",
+      "FILTRE_AIR": "Filtre à Air",
+      "FILTRE_HABITACLE": "Filtre Habitacle",
+      "BOUGIES_ALLUMAGE": "Bougies d'Allumage",
+      "KIT_DISTRIBUTION": "Kit de Distribution",
+      "POMPE_A_EAU": "Pompe à Eau",
+      "AMORTISSEURS_AV": "Amortisseurs AV",
+      "AMORTISSEURS_AR": "Amortisseurs AR",
+      "BATTERIE": "Batterie",
+      "JOINTS_SPY": "Joints Spy",
+      "COURROIE_ACCESSOIRE": "Courroie Accessoires",
+      "LIQUIDE_REFROIDISSEMENT": "Liquide de Refroidissement",
+      "LIQUIDE_FREIN": "Liquide de Frein",
+      "HUILE_MOTEUR": "Huile Moteur",
+      "PNEUMATIQUES": "Pneumatiques",
+      "ESSUIE_GLACES": "Essuie-glaces"
+    }
+  }
+}
+

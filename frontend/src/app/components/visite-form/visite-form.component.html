@@ -1,0 +1,192 @@
+<div class="px-4 py-6 sm:px-0" *ngIf="vehicule; else loadingTpl">
+    <div class="mb-6 flex items-center justify-between">
+        <div>
+            <h1 class="text-3xl font-bold text-gray-900">{{ (fiche.id ? 'VISITE_FORM.TITLE_EDIT' : 'VISITE_FORM.TITLE_ADD') | translate }}</h1>
+            <p class="text-gray-500 mt-1">{{ 'VISITE_DETAIL.VEHICLE' | translate }}: <span class="font-mono font-bold text-blue-600">{{ vehicule.immatriculationPart1 }}-{{ vehicule.immatriculationPart2 }}-{{ vehicule.immatriculationPart3 }}</span></p>
+        </div>
+        <button (click)="goBack()" class="text-blue-600 hover:text-blue-900 font-medium">← {{ 'VISITE_FORM.CANCEL' | translate }}</button>
+    </div>
+
+    <div class="bg-white shadow-xl rounded-3xl overflow-hidden border border-gray-100">
+        <form (ngSubmit)="onSubmit()" #vForm="ngForm" class="p-8 space-y-8">
+            
+            <!-- Section 1: Infos Générales -->
+            <div>
+                <h3 class="text-xs font-black text-gray-400 uppercase tracking-widest mb-6 pb-2 border-b">{{ 'VISITE_FORM.SECTION_1' | translate }}</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">{{ 'VISITE_FORM.KM' | translate }}</label>
+                        <input type="number" [(ngModel)]="fiche.kilometrage" name="km" required
+                               class="w-full px-4 py-2 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl outline-none transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">{{ 'VISITE_FORM.SEVERITY' | translate }}</label>
+                        <select [(ngModel)]="fiche.gravite" name="gravite" required
+                                class="w-full px-4 py-2 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl outline-none transition-all">
+                            <option *ngFor="let g of graviteOptions" [value]="g">{{ ('COMMON.SEVERITY.' + g) | translate }}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">{{ 'VISITE_FORM.REPARABLE' | translate }}</label>
+                        <select [(ngModel)]="fiche.reparable" name="reparable"
+                                class="w-full px-4 py-2 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl outline-none transition-all">
+                            <option [ngValue]="true">{{ 'COMMON.YES' | translate }}</option>
+                            <option [ngValue]="false">{{ 'COMMON.NO' | translate }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: État des Composants -->
+            <div>
+                <h3 class="text-xs font-black text-gray-400 uppercase tracking-widest mb-6 pb-2 border-b">{{ 'VISITE_FORM.SECTION_2' | translate }}</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">{{ 'VISITE_DETAIL.ENGINE' | translate }}</label>
+                        <select [(ngModel)]="fiche.etatMoteur" name="etatMoteur"
+                                class="w-full px-4 py-2 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl outline-none transition-all">
+                            <option *ngFor="let e of etatOptions" [value]="e">{{ ('COMMON.ETAT.' + e) | translate }}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">{{ 'VISITE_DETAIL.BRAKES' | translate }}</label>
+                        <select [(ngModel)]="fiche.etatFreins" name="etatFreins"
+                                class="w-full px-4 py-2 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl outline-none transition-all">
+                            <option *ngFor="let e of etatOptions" [value]="e">{{ ('COMMON.ETAT.' + e) | translate }}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">{{ 'VISITE_DETAIL.SUSPENSION' | translate }}</label>
+                        <select [(ngModel)]="fiche.etatSuspension" name="etatSuspension"
+                                class="w-full px-4 py-2 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl outline-none transition-all">
+                            <option *ngFor="let e of etatOptions" [value]="e">{{ ('COMMON.ETAT.' + e) | translate }}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">{{ 'VISITE_DETAIL.ELECTRIC' | translate }}</label>
+                        <select [(ngModel)]="fiche.etatElectrique" name="etatElectrique"
+                                class="w-full px-4 py-2 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl outline-none transition-all">
+                            <option *ngFor="let e of etatOptions" [value]="e">{{ ('COMMON.ETAT.' + e) | translate }}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">{{ 'VISITE_DETAIL.BODY' | translate }}</label>
+                        <select [(ngModel)]="fiche.etatCarrosserie" name="etatCarrosserie"
+                                class="w-full px-4 py-2 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl outline-none transition-all">
+                            <option *ngFor="let e of etatOptions" [value]="e">{{ ('COMMON.ETAT.' + e) | translate }}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">{{ 'VISITE_DETAIL.GENERAL_STATE' | translate }}</label>
+                        <select [(ngModel)]="fiche.etatGeneral" name="etatGeneral"
+                                class="w-full px-4 py-2 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl outline-none transition-all">
+                            <option *ngFor="let e of etatOptions" [value]="e">{{ ('COMMON.ETAT.' + e) | translate }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Pannes -->
+            <div>
+                <h3 class="text-xs font-black text-gray-400 uppercase tracking-widest mb-6 pb-2 border-b">{{ 'VISITE_FORM.SECTION_3' | translate }}</h3>
+                <div class="flex gap-2 mb-4">
+                    <select [(ngModel)]="newPanne" name="newPanne"
+                           class="flex-1 px-4 py-2 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl outline-none transition-all">
+                        <option value="">{{ 'VISITE_FORM.SELECT_FAULT' | translate }}</option>
+                        <option *ngFor="let p of availablePannes" [value]="p">{{ 'COMMON.FAULTS.' + p | translate }}</option>
+                    </select>
+                    <button type="button" (click)="addPanne()" [disabled]="!newPanne" class="px-4 py-2 bg-blue-600 text-white rounded-xl font-bold disabled:opacity-30">+</button>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span *ngFor="let panne of fiche.pannes; let i = index" class="inline-flex items-center gap-2 px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">
+                        {{ panne }}
+                        <button type="button" (click)="removePanne(i)" class="text-red-600 hover:text-red-800">×</button>
+                    </span>
+                </div>
+                <div class="mt-4">
+                    <label class="block text-sm font-bold text-gray-700 mb-1">{{ 'VISITE_FORM.DIAG_DESC_LABEL' | translate }}</label>
+                    <textarea [(ngModel)]="fiche.descriptionDiagnostic" name="descDiag" rows="2"
+                               class="w-full px-4 py-2 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl outline-none transition-all"
+                               placeholder="{{ 'VISITE_FORM.DIAG_DESC_PLACEHOLDER' | translate }}"></textarea>
+                </div>
+            </div>
+
+            <!-- Section 4: Pièces Changées -->
+            <div>
+                <h3 class="text-xs font-black text-gray-400 uppercase tracking-widest mb-6 pb-2 border-b">{{ 'VISITE_FORM.SECTION_4' | translate }}</h3>
+                <div class="flex gap-2 mb-4">
+                    <select [(ngModel)]="newPiece" name="newPiece"
+                           class="flex-1 px-4 py-2 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl outline-none transition-all">
+                        <option value="">{{ 'VISITE_FORM.SELECT_PART' | translate }}</option>
+                        <option *ngFor="let p of availablePieces" [value]="p">{{ 'COMMON.PARTS.' + p | translate }}</option>
+                    </select>
+                    <button type="button" (click)="addPiece()" [disabled]="!newPiece" class="px-4 py-2 bg-green-600 text-white rounded-xl font-bold disabled:opacity-30">+</button>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span *ngFor="let piece of fiche.piecesChangees; let i = index" class="inline-flex items-center gap-2 px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                        {{ piece }}
+                        <button type="button" (click)="removePiece(i)" class="text-green-600 hover:text-green-800">×</button>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Section 5: Coûts -->
+            <div>
+                <h3 class="text-xs font-black text-gray-400 uppercase tracking-widest mb-6 pb-2 border-b">{{ 'VISITE_FORM.SECTION_5' | translate }}</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">{{ 'VISITE_FORM.PARTS_COST' | translate }}</label>
+                        <input type="number" [(ngModel)]="fiche.coutPieces" name="coutPieces"
+                               class="w-full px-4 py-2 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl outline-none transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">{{ 'VISITE_FORM.LABOR_COST' | translate }}</label>
+                        <input type="number" [(ngModel)]="fiche.coutMainOeuvre" name="coutMO"
+                               class="w-full px-4 py-2 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl outline-none transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">{{ 'VISITE_FORM.DURATION' | translate }}</label>
+                        <input type="number" [(ngModel)]="fiche.dureeReparationHeures" name="duree"
+                               class="w-full px-4 py-2 bg-gray-50 border-2 border-transparent focus:border-blue-500 rounded-xl outline-none transition-all">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 6: Statut Final -->
+            <div class="bg-gray-50 p-6 rounded-3xl">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1">
+                        <label class="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">{{ 'VISITE_LIST.TABLE.STATUS' | translate }}</label>
+                        <div class="flex gap-2 flex-wrap">
+                            <button type="button" *ngFor="let s of statutOptions" (click)="fiche.statut = s"
+                                    [class]="fiche.statut === s ? 'bg-blue-600 text-white shadow-blue-200' : 'bg-white text-gray-400 border-gray-100 hover:bg-gray-100'"
+                                    class="flex-1 py-3 rounded-xl font-bold uppercase text-sm border-2 border-transparent transition-all shadow-lg">
+                                {{ getStatutLabel(s) | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <label class="block text-sm font-bold text-gray-700 mb-1">{{ 'VISITE_FORM.OBSERVATION_LABEL' | translate }}</label>
+                    <textarea [(ngModel)]="fiche.observationMecanicien" name="observation" rows="2"
+                               class="w-full px-4 py-2 bg-white border-2 border-gray-100 focus:border-blue-500 rounded-xl outline-none transition-all"
+                               placeholder="{{ 'VISITE_FORM.OBSERVATION_PLACEHOLDER' | translate }}"></textarea>
+                </div>
+            </div>
+
+            <div class="flex justify-end pt-4">
+                <button type="submit" 
+                        class="px-12 py-4 bg-gray-900 text-white rounded-2xl font-black uppercase tracking-tighter text-lg hover:bg-black hover:scale-105 active:scale-95 transition-all shadow-xl">
+                    {{ 'VISITE_FORM.VALIDATE' | translate }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<ng-template #loadingTpl>
+    <div class="text-center py-20">
+        <div class="animate-spin h-10 w-10 border-4 border-blue-600 border-t-transparent rounded-full mx-auto mb-4"></div>
+        <p class="text-gray-500 font-bold uppercase tracking-widest text-xs">{{ 'VEHICLE_DETAIL.LOADING' | translate }}</p>
+    </div>
+</ng-template>

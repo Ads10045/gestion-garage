@@ -1,0 +1,148 @@
+<div class="px-4 py-2 sm:px-0">
+    
+    <!-- Hero Section with New Premium HUD Banner - Height reduced to half -->
+    <div class="relative overflow-hidden rounded-[2.5rem] mb-10 h-[14rem] shadow-2xl group border-4 border-white/10">
+        <img src="assets/dashboard-header.png" alt="Auto visite Premium HUD" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Card Clients -->
+        <div class="group bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 rounded-2xl border border-gray-100 p-1">
+            <div class="bg-gray-50/50 rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{{ 'DASHBOARD.STATS.TOTAL_CLIENTS' | translate }}</p>
+                        <p class="text-4xl font-black text-gray-900">{{ stats.clients }}</p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-2xl shadow-sm text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-110">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a [routerLink]="['/search']" [queryParams]="{type: 'client'}" class="inline-flex items-center text-sm font-bold text-blue-600 hover:gap-2 transition-all">
+                        {{ 'DASHBOARD.MANAGE_CLIENTS' | translate }}
+                        <svg class="ml-1 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Vehicules -->
+        <div class="group bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 rounded-2xl border border-gray-100 p-1">
+            <div class="bg-gray-50/50 rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{{ 'DASHBOARD.STATS.ACTIVE_VEHICLES' | translate }}</p>
+                        <p class="text-4xl font-black text-gray-900">{{ stats.vehicules }}</p>
+                    </div>
+                    <div class="bg-emerald-50 p-4 rounded-2xl shadow-sm text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-110">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1-1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a [routerLink]="['/search']" [queryParams]="{type: 'vehicule'}" class="inline-flex items-center text-sm font-bold text-emerald-600 hover:gap-2 transition-all">
+                        {{ 'DASHBOARD.EXPLORE_FLEET' | translate }}
+                        <svg class="ml-1 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Fiches -->
+        <div class="group bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 rounded-2xl border border-gray-100 p-1">
+            <div class="bg-gray-50/50 rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{{ 'DASHBOARD.STATS.TECH_SHEETS' | translate }}</p>
+                        <p class="text-4xl font-black text-gray-900">{{ stats.fiches }}</p>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-2xl shadow-sm text-yellow-500 group-hover:bg-yellow-500 group-hover:text-white transition-all duration-300 transform group-hover:scale-110">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a [routerLink]="['/fiches']" class="inline-flex items-center text-sm font-bold text-yellow-600 hover:gap-2 transition-all">
+                        {{ 'DASHBOARD.VIEW_FICHES' | translate }}
+                        <svg class="ml-1 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Activities Timeline -->
+    <div class="mt-12">
+        <h3 class="text-xs font-black text-gray-400 uppercase tracking-[0.3em] mb-8 flex items-center">
+            <div class="p-2 bg-blue-600 rounded-lg shadow-lg shadow-blue-100 mr-4">
+                <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+            </div>
+            {{ 'DASHBOARD.RECENT_FICHES' | translate }}
+        </h3>
+        <div class="bg-white rounded-[2.5rem] shadow-xl border border-gray-100 overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-100">
+                    <thead class="bg-gray-50/50">
+                        <tr>
+                            <th class="px-8 py-4 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">{{ 'DASHBOARD.TABLE.VEHICLE' | translate }}</th>
+                            <th class="px-8 py-4 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">{{ 'DASHBOARD.TABLE.DATE_DIAG' | translate }}</th>
+                            <th class="px-8 py-4 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">{{ 'DASHBOARD.TABLE.SEVERITY' | translate }}</th>
+                            <th class="px-8 py-4 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">{{ 'DASHBOARD.TABLE.STATUS' | translate }}</th>
+                            <th class="px-8 py-4 text-right text-[10px] font-black text-gray-400 uppercase tracking-widest">{{ 'DASHBOARD.TABLE.ACTION' | translate }}</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-50">
+                        <tr *ngFor="let f of recentFiches" class="hover:bg-gray-50/80 transition-colors group">
+                            <td class="px-8 py-6">
+                                <div class="flex items-center gap-4">
+                                    <div class="bg-gray-900 text-white px-3 py-1 rounded-lg font-mono text-xs font-bold ring-2 ring-gray-100">
+                                        {{ f.immatriculation || 'N/A' }}
+                                    </div>
+                                    <div>
+                                        <p class="font-black text-gray-900 uppercase tracking-tighter">{{ f.marque }} {{ f.modele }}</p>
+                                        <p class="text-xs font-bold text-gray-400 italic">{{ f.kilometrage | number }} KM</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-8 py-6">
+                                <p class="text-sm font-black text-gray-700">{{ f.dateDiagnostic }}</p>
+                            </td>
+                            <td class="px-8 py-6">
+                                <span [class]="f.gravite === 'CRITIQUE' ? 'bg-red-100 text-red-700' : f.gravite === 'MAJEURE' ? 'bg-orange-100 text-orange-700' : 'bg-blue-100 text-blue-700'" 
+                                      class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+                                    {{ (f.gravite ? 'COMMON.SEVERITY.' + f.gravite : 'COMMON.SEVERITY.NA') | translate }}
+                                </span>
+                            </td>
+                            <td class="px-8 py-6">
+                                <span [class]="getStatutClass(f.statut)" 
+                                      class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+                                    {{ getStatutLabel(f.statut) | translate }}
+                                </span>
+                            </td>
+                            <td class="px-8 py-6 text-right">
+                                <a [routerLink]="['/fiches', f.id]" class="text-blue-600 hover:text-white transition-all inline-block p-2 hover:bg-blue-600 rounded-xl shadow-sm group-hover:shadow-md transform hover:scale-110" title="{{ 'ACTIONS.VIEW_FICHE' | translate }}">
+                                    <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="recentFiches.length === 0" class="p-20 text-center">
+                <div class="p-6 bg-gray-50 rounded-3xl inline-block mb-4">
+                    <svg class="w-12 h-12 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <p class="text-gray-400 font-bold uppercase tracking-widest text-xs">{{ 'DASHBOARD.NO_RECENT_FICHES' | translate }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+

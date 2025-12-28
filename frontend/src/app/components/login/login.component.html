@@ -1,0 +1,75 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <!-- Background Image / Design -->
+    <div class="absolute inset-0 z-0">
+        <img src="assets/dashboard-header.png" alt="Hero Background" class="w-full h-full object-cover opacity-10 blur-sm scale-110">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-indigo-600/20"></div>
+    </div>
+
+    <!-- Language Selector -->
+    <div class="absolute top-4 right-4 z-20 flex gap-2">
+        <button (click)="switchLanguage('fr')" 
+            [class.bg-blue-600]="currentLang === 'fr'" 
+            [class.text-white]="currentLang === 'fr'"
+            class="px-3 py-1 rounded-lg text-sm font-bold bg-white/80 backdrop-blur border border-white/50 hover:bg-white transition-all shadow-sm">
+            FR
+        </button>
+        <button (click)="switchLanguage('en')" 
+            [class.bg-blue-600]="currentLang === 'en'" 
+            [class.text-white]="currentLang === 'en'"
+            class="px-3 py-1 rounded-lg text-sm font-bold bg-white/80 backdrop-blur border border-white/50 hover:bg-white transition-all shadow-sm">
+            EN
+        </button>
+        <button (click)="switchLanguage('ar')" 
+            [class.bg-blue-600]="currentLang === 'ar'" 
+            [class.text-white]="currentLang === 'ar'"
+            class="px-3 py-1 rounded-lg text-sm font-bold bg-white/80 backdrop-blur border border-white/50 hover:bg-white transition-all shadow-sm">
+            AR
+        </button>
+    </div>
+
+    <!-- Login Card -->
+    <div class="max-w-md w-full space-y-8 p-10 bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/50 z-10">
+        <div class="text-center">
+            <div class="mx-auto h-20 w-20 flex items-center justify-center bg-blue-600 rounded-3xl shadow-lg shadow-blue-200 mb-6">
+                <!-- Icon remains same -->
+                <svg class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 00-2 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+            </div>
+            <h2 class="text-3xl font-black text-gray-900 uppercase tracking-tight">Auto <span class="text-blue-600">visite</span></h2>
+            <p class="mt-2 text-sm font-bold text-gray-500 uppercase tracking-widest">{{ 'LOGIN.TITLE' | translate }}</p>
+        </div>
+
+        <form class="mt-8 space-y-6" (submit)="onSubmit()">
+            <div class="space-y-4">
+                <div>
+                    <label for="username" class="text-xs font-black text-gray-400 uppercase tracking-wider ml-1">{{ 'LOGIN.USERNAME' | translate }}</label>
+                    <input id="username" name="username" type="text" [(ngModel)]="username" required 
+                        class="appearance-none rounded-2xl relative block w-full px-4 py-3 border border-gray-200 placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white/50" 
+                        [placeholder]="'LOGIN.USERNAME' | translate">
+                </div>
+                <div>
+                    <label for="password" class="text-xs font-black text-gray-400 uppercase tracking-wider ml-1">{{ 'LOGIN.PASSWORD' | translate }}</label>
+                    <input id="password" name="password" type="password" [(ngModel)]="password" required 
+                        class="appearance-none rounded-2xl relative block w-full px-4 py-3 border border-gray-200 placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white/50" 
+                        [placeholder]="'LOGIN.PASSWORD' | translate">
+                </div>
+            </div>
+
+            <div *ngIf="error" class="text-red-600 text-sm font-bold text-center bg-red-50 py-2 rounded-xl border border-red-100 animate-pulse">
+                {{ error }}
+            </div>
+
+            <div>
+                <button type="submit" 
+                    class="group relative w-full flex justify-center py-4 px-4 border border-transparent text-sm font-black rounded-2xl text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all shadow-lg shadow-blue-200 uppercase tracking-widest">
+                    {{ 'LOGIN.BUTTON' | translate }}
+                </button>
+            </div>
+            
+            <div class="text-center">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">{{ 'COMMON.VERSION' | translate }} PRO 1.1</span>
+            </div>
+        </form>
+    </div>
+</div>

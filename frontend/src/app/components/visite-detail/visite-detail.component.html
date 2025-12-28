@@ -1,0 +1,183 @@
+<div class="px-4 py-8 sm:px-0 max-w-5xl mx-auto" *ngIf="fiche; else loadingTpl">
+    <!-- Header with Actions -->
+    <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 print:hidden">
+        <div>
+            <button (click)="goBack()" class="group mb-4 flex items-center text-sm font-bold text-gray-400 hover:text-blue-600 transition-colors">
+                <svg class="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                {{ 'VISITE_DETAIL.BACK' | translate }}
+            </button>
+            <h1 class="text-4xl font-black text-gray-900 tracking-tighter uppercase">{{ 'VISITE_DETAIL.TITLE' | translate }}</h1>
+            <p class="text-gray-500 font-medium">{{ 'VISITE_DETAIL.ID' | translate }}: <span class="font-mono text-blue-600 font-bold">FT-{{ fiche.id }}</span></p>
+        </div>
+        <div class="flex gap-4">
+            <button (click)="printReport()" class="px-8 py-3 bg-gray-900 text-white rounded-2xl font-black uppercase tracking-tighter hover:bg-black hover:scale-105 active:scale-95 transition-all shadow-xl flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
+                {{ 'VISITE_DETAIL.PRINT' | translate }}
+            </button>
+            <ng-container *ngIf="isAdmin">
+                <button (click)="editFiche()" class="px-6 py-3 bg-blue-50 text-blue-600 rounded-2xl font-black uppercase tracking-tighter hover:bg-blue-100 transition-all shadow-sm border border-blue-100">
+                    {{ 'VISITE_DETAIL.MODIFY' | translate }}
+                </button>
+                <button (click)="deleteFiche()" class="px-6 py-3 bg-red-50 text-red-600 rounded-2xl font-black uppercase tracking-tighter hover:bg-red-100 transition-all shadow-sm border border-red-100">
+                    {{ 'VISITE_DETAIL.DELETE' | translate }}
+                </button>
+            </ng-container>
+        </div>
+    </div>
+
+    <!-- Main Report Card -->
+    <div class="bg-white shadow-2xl rounded-[3rem] overflow-hidden border border-gray-100 print:shadow-none print:border-none">
+        
+        <!-- Status Banner -->
+        <div [class]="fiche.statut === 'REPARE' ? 'bg-green-600' : fiche.statut === 'NON_REPARABLE' ? 'bg-red-600' : 'bg-yellow-500'" 
+             class="px-10 py-6 flex items-center justify-between text-white">
+            <div class="flex items-center gap-4">
+                <div class="p-3 bg-white/20 backdrop-blur-md rounded-2xl">
+                    <svg *ngIf="fiche.statut === 'REPARE'" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                    <svg *ngIf="fiche.statut === 'NON_REPARABLE'" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" /></svg>
+                    <svg *ngIf="fiche.statut !== 'REPARE' && fiche.statut !== 'NON_REPARABLE'" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <div>
+                     <p class="text-[10px] font-black uppercase tracking-[0.2em] opacity-80 leading-none mb-1">{{ 'VISITE_DETAIL.STATUS' | translate }}</p>
+                     <h2 class="text-3xl font-black tracking-tighter">{{ getStatutLabel(fiche.statut) | translate }}</h2>
+                </div>
+            </div>
+            <div class="text-right hidden sm:block">
+                 <p class="text-[10px] font-black uppercase tracking-[0.2em] opacity-80 leading-none mb-1">{{ 'VISITE_DETAIL.SEVERITY' | translate }}</p>
+                 <p class="text-xl font-black">{{ (fiche.gravite ? 'COMMON.SEVERITY.' + fiche.gravite : 'COMMON.SEVERITY.NA') | translate }}</p>
+            </div>
+        </div>
+
+        <div class="p-10 space-y-12">
+            <!-- Section 1: Vehicle Info -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-12 border-b border-gray-100">
+                <div class="md:col-span-2">
+                    <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">{{ 'VISITE_DETAIL.VEHICLE' | translate }}</label>
+                    <div class="flex items-center gap-6">
+                        <div class="bg-gray-900 text-white px-6 py-3 rounded-2xl font-mono text-2xl font-black tracking-widest shadow-lg border-2 border-white/10">
+                            {{ fiche.immatriculation || 'N/A' }}
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black text-gray-900 uppercase tracking-tighter">{{ fiche.marque }} {{ fiche.modele }}</h3>
+                            <p class="text-gray-500 font-bold">{{ fiche.annee }} • {{ fiche.kilometrage | number }} KM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-3xl">
+                     <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">{{ 'VISITE_DETAIL.DATE_DIAG' | translate }}</label>
+                     <p class="font-black text-gray-800">{{ fiche.dateDiagnostic }}</p>
+                     <p class="text-sm font-bold text-gray-500 italic" *ngIf="fiche.dateReparation">{{ 'VISITE_DETAIL.REPAIRED_ON' | translate }} {{ fiche.dateReparation }}</p>
+                </div>
+            </div>
+
+            <!-- Section 2: État des Composants -->
+            <div>
+                 <h3 class="text-xs font-black text-gray-400 uppercase tracking-[0.3em] mb-8 flex items-center">
+                    <span class="w-8 h-[2px] bg-blue-600 mr-4"></span>
+                    {{ 'VISITE_DETAIL.COMPONENTS_STATE' | translate }}
+                 </h3>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between group">
+                            <span class="text-gray-600 font-bold group-hover:text-gray-900 transition-colors">{{ 'VISITE_DETAIL.ENGINE' | translate }}</span>
+                            <span [class]="getEtatClass(fiche.etatMoteur)" class="text-sm font-black">{{ getEtatLabel(fiche.etatMoteur) | translate }}</span>
+                        </div>
+                        <div class="flex items-center justify-between group">
+                            <span class="text-gray-600 font-bold group-hover:text-gray-900 transition-colors">{{ 'VISITE_DETAIL.BRAKES' | translate }}</span>
+                            <span [class]="getEtatClass(fiche.etatFreins)" class="text-sm font-black">{{ getEtatLabel(fiche.etatFreins) | translate }}</span>
+                        </div>
+                        <div class="flex items-center justify-between group">
+                            <span class="text-gray-600 font-bold group-hover:text-gray-900 transition-colors">{{ 'VISITE_DETAIL.SUSPENSION' | translate }}</span>
+                            <span [class]="getEtatClass(fiche.etatSuspension)" class="text-sm font-black">{{ getEtatLabel(fiche.etatSuspension) | translate }}</span>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between group">
+                            <span class="text-gray-600 font-bold group-hover:text-gray-900 transition-colors">{{ 'VISITE_DETAIL.ELECTRIC' | translate }}</span>
+                            <span [class]="getEtatClass(fiche.etatElectrique)" class="text-sm font-black">{{ getEtatLabel(fiche.etatElectrique) | translate }}</span>
+                        </div>
+                        <div class="flex items-center justify-between group">
+                            <span class="text-gray-600 font-bold group-hover:text-gray-900 transition-colors">{{ 'VISITE_DETAIL.BODY' | translate }}</span>
+                            <span [class]="getEtatClass(fiche.etatCarrosserie)" class="text-sm font-black">{{ getEtatLabel(fiche.etatCarrosserie) | translate }}</span>
+                        </div>
+                        <div class="flex items-center justify-between group">
+                            <span class="text-gray-600 font-bold group-hover:text-gray-900 transition-colors">{{ 'VISITE_DETAIL.GENERAL_STATE' | translate }}</span>
+                            <span [class]="getEtatClass(fiche.etatGeneral)" class="text-sm font-black">{{ getEtatLabel(fiche.etatGeneral) | translate }}</span>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+
+            <!-- Section 3: Pannes & Diagnostic -->
+            <div class="bg-gray-900 rounded-[2.5rem] p-10 text-white" *ngIf="fiche.pannes && fiche.pannes.length > 0">
+                 <h3 class="text-[10px] font-black uppercase tracking-[0.3em] text-red-400 mb-6">{{ 'VISITE_DETAIL.IDENTIFIED_PANNE' | translate }}</h3>
+                 <div class="space-y-3">
+                    <div *ngFor="let panne of fiche.pannes" class="flex gap-4 border-l-4 border-red-600 pl-4 py-1">
+                        <p class="text-lg font-bold">{{ panne }}</p>
+                    </div>
+                 </div>
+                 <div class="mt-6 pt-6 border-t border-gray-700" *ngIf="fiche.descriptionDiagnostic">
+                    <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">{{ 'VISITE_DETAIL.DIAG_DESC' | translate }}</p>
+                    <p class="text-gray-300 italic">{{ fiche.descriptionDiagnostic }}</p>
+                 </div>
+            </div>
+
+             <!-- Section 4: Coûts & Pièces -->
+             <div class="pt-12 grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div *ngIf="fiche.piecesChangees && fiche.piecesChangees.length > 0">
+                    <h3 class="text-xs font-black text-gray-400 uppercase tracking-[0.3em] mb-6 flex items-center">
+                        <span class="w-8 h-[2px] bg-blue-600 mr-4"></span>
+                        {{ 'VISITE_DETAIL.CHANGED_PARTS' | translate }}
+                    </h3>
+                    <div class="space-y-2 bg-gray-50 p-6 rounded-3xl border border-gray-100">
+                        <div *ngFor="let piece of fiche.piecesChangees" class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                            <span class="font-bold text-gray-800">{{ piece }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-black text-gray-400 uppercase tracking-[0.3em] mb-6 flex items-center">
+                        <span class="w-8 h-[2px] bg-blue-600 mr-4"></span>
+                        {{ 'VISITE_DETAIL.COSTS' | translate }}
+                    </h3>
+                    <div class="bg-blue-50 p-6 rounded-3xl border border-blue-100">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-600">{{ 'VISITE_DETAIL.PARTS_COST' | translate }}</span>
+                            <span class="font-black text-gray-900">{{ fiche.coutPieces | number:'1.2-2' }} DH</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-600">{{ 'VISITE_DETAIL.LABOR_COST' | translate }}</span>
+                            <span class="font-black text-gray-900">{{ fiche.coutMainOeuvre | number:'1.2-2' }} DH</span>
+                        </div>
+                        <div class="flex justify-between pt-4 border-t border-blue-200">
+                            <span class="font-black text-blue-600 uppercase">{{ 'VISITE_DETAIL.TOTAL' | translate }}</span>
+                            <span class="font-black text-2xl text-blue-600">{{ getCoutTotal() | number:'1.2-2' }} DH</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-4" *ngIf="fiche.dureeReparationHeures">
+                            {{ 'VISITE_DETAIL.ESTIMATED_DURATION' | translate }} <span class="font-bold">{{ fiche.dureeReparationHeures }} {{ 'VISITE_FORM.DURATION' | translate }}</span>
+                        </p>
+                    </div>
+                </div>
+             </div>
+
+             <div class="pt-8 border-t border-gray-50" *ngIf="fiche.observationMecanicien">
+                <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">{{ 'VISITE_DETAIL.MECHANIC_OBSERVATION' | translate }}</p>
+                <p class="text-gray-700 italic text-sm leading-relaxed whitespace-pre-wrap">{{ fiche.observationMecanicien }}</p>
+             </div>
+        </div>
+    </div>
+
+    <!-- Final Small Note -->
+    <p class="text-center mt-10 text-[10px] text-gray-400 font-bold uppercase tracking-widest">
+        {{ 'VISITE_DETAIL.FOOTNOTE_1' | translate }} <br>
+        {{ 'VISITE_DETAIL.FOOTNOTE_2' | translate }}
+    </p>
+</div>
+
+<ng-template #loadingTpl>
+    <div class="text-center py-20">
+        <div class="animate-spin h-10 w-10 border-4 border-blue-600 border-t-transparent rounded-full mx-auto mb-4"></div>
+        <p class="text-gray-500 font-bold uppercase tracking-widest text-xs">{{ 'VISITE_DETAIL.LOADING' | translate }}</p>
+    </div>
+</ng-template>

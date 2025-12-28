@@ -1,0 +1,711 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Auto-Reparation API (PHP Laravel)",
+        "description": "API alternative en PHP pour la gestion des visites techniques.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api",
+            "description": "Serveur Local API"
+        }
+    ],
+    "paths": {
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "User login",
+                "operationId": "99d66635c4992aeaa6aa44ff653d0563",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "username": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login successful"
+                    }
+                }
+            }
+        },
+        "/clients": {
+            "get": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Get all clients with pagination and search",
+                "operationId": "6536f8d22d25758c3e14dbbe8e228af0",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of clients"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Create a new client",
+                "operationId": "74a35b85418e09c2489915865dd22445",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Client"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Client created"
+                    }
+                }
+            }
+        },
+        "/clients/{id}": {
+            "get": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Get client details",
+                "operationId": "1837c830668b0f7aa87761172e9a8cf9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "long"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Client details"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Update a client",
+                "operationId": "1ee17ab59b59dd0a816f385b724d2b6c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "long"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Client"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Client updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Delete a client",
+                "operationId": "3505fe07e8722ba21177850f874211f2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "long"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    }
+                }
+            }
+        },
+        "/stats": {
+            "get": {
+                "tags": [
+                    "Stats"
+                ],
+                "summary": "Get dashboard statistics",
+                "operationId": "650f9464b8366de5a021b51ca3a48123",
+                "responses": {
+                    "200": {
+                        "description": "Statistiques du tableau de bord",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalClients": {
+                                            "type": "integer"
+                                        },
+                                        "totalVehicules": {
+                                            "type": "integer"
+                                        },
+                                        "totalVisites": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vehicules": {
+            "get": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Get all vehicles with pagination and search",
+                "operationId": "b75d31179b26a93f484c1b3568d84bea",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of vehicles"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Create a new vehicle",
+                "operationId": "34d96ab396db40494fd7d41e80b0ce4b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Vehicule"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Vehicle created"
+                    }
+                }
+            }
+        },
+        "/vehicules/{id}": {
+            "get": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Get vehicle details",
+                "operationId": "c9ba3422bb39233650b42ef2f30fd0ca",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "long"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Vehicle details"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Update a vehicle",
+                "operationId": "b2845a2e50e7ed98062c0eb06731f68c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "long"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Vehicule"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Vehicle updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Vehicles"
+                ],
+                "summary": "Delete a vehicle",
+                "operationId": "7b1d8e70b9b856983647260d467afc77",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "long"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    }
+                }
+            }
+        },
+        "/visites": {
+            "get": {
+                "tags": [
+                    "Visits"
+                ],
+                "summary": "Get all visits with pagination and search",
+                "operationId": "f685ce7d4623a85d4f93d4c2b5b61792",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of visits"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Visits"
+                ],
+                "summary": "Create a new visit",
+                "operationId": "23f36dbcf41a12bdc663d2640fa2a30f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VisiteTechnique"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Visit created"
+                    }
+                }
+            }
+        },
+        "/visites/recent": {
+            "get": {
+                "tags": [
+                    "Visits"
+                ],
+                "summary": "Get recent visits",
+                "operationId": "4e774789121c6c412600efe67bba66fe",
+                "responses": {
+                    "200": {
+                        "description": "Recent visits"
+                    }
+                }
+            }
+        },
+        "/visites/{id}": {
+            "get": {
+                "tags": [
+                    "Visits"
+                ],
+                "summary": "Get visit details",
+                "operationId": "35b2205b8a90075e4d2b96f649eeec11",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "long"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Visit details"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Visits"
+                ],
+                "summary": "Update a visit",
+                "operationId": "2679687ffe2816e9475697e493378209",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "long"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VisiteTechnique"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Visit updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Visits"
+                ],
+                "summary": "Delete a visit",
+                "operationId": "f8f38fadd4b4c0b313ecb379e8731ea1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "long"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Client": {
+                "required": [
+                    "nom",
+                    "prenom",
+                    "telephone"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": true
+                    },
+                    "nom": {
+                        "type": "string"
+                    },
+                    "prenom": {
+                        "type": "string"
+                    },
+                    "cin": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "telephone": {
+                        "type": "string"
+                    },
+                    "adresse": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Vehicule": {
+                "required": [
+                    "immatriculation_part1",
+                    "immatriculation_part2",
+                    "immatriculation_part3",
+                    "marque",
+                    "modele",
+                    "client_id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": true
+                    },
+                    "immatriculation_part1": {
+                        "type": "string"
+                    },
+                    "immatriculation_part2": {
+                        "type": "string"
+                    },
+                    "immatriculation_part3": {
+                        "type": "string"
+                    },
+                    "marque": {
+                        "type": "string"
+                    },
+                    "modele": {
+                        "type": "string"
+                    },
+                    "type_vehicule": {
+                        "type": "string"
+                    },
+                    "carburant": {
+                        "type": "string"
+                    },
+                    "puissance_fiscale": {
+                        "type": "string"
+                    },
+                    "annee_mise_circulation": {
+                        "type": "string"
+                    },
+                    "numero_chassis": {
+                        "type": "string"
+                    },
+                    "kilometrage_compteur": {
+                        "type": "integer"
+                    },
+                    "client_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "VisiteTechnique": {
+                "required": [
+                    "date_visite",
+                    "kilometrage",
+                    "resultat_final",
+                    "vehicule_id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": true
+                    },
+                    "numero_visite": {
+                        "type": "string"
+                    },
+                    "date_visite": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "heure_visite": {
+                        "type": "string"
+                    },
+                    "kilometrage": {
+                        "type": "integer"
+                    },
+                    "centre_visite": {
+                        "type": "string"
+                    },
+                    "ville": {
+                        "type": "string"
+                    },
+                    "controleur": {
+                        "type": "string"
+                    },
+                    "resultat_final": {
+                        "type": "string"
+                    },
+                    "date_validite": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "observations_generales": {
+                        "type": "string"
+                    },
+                    "freinage": {
+                        "type": "boolean"
+                    },
+                    "direction": {
+                        "type": "boolean"
+                    },
+                    "suspension": {
+                        "type": "boolean"
+                    },
+                    "pneus": {
+                        "type": "boolean"
+                    },
+                    "pare_brise": {
+                        "type": "boolean"
+                    },
+                    "phares_avant": {
+                        "type": "boolean"
+                    },
+                    "feux_arriere": {
+                        "type": "boolean"
+                    },
+                    "niveau_emission": {
+                        "type": "string"
+                    },
+                    "description_panne": {
+                        "type": "string"
+                    },
+                    "piece_manquante": {
+                        "type": "string"
+                    },
+                    "piece_a_reparer": {
+                        "type": "string"
+                    },
+                    "temps_reparation": {
+                        "type": "string"
+                    },
+                    "vehicule_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Auth",
+            "description": "Auth"
+        },
+        {
+            "name": "Clients",
+            "description": "Clients"
+        },
+        {
+            "name": "Stats",
+            "description": "Stats"
+        },
+        {
+            "name": "Vehicles",
+            "description": "Vehicles"
+        },
+        {
+            "name": "Visits",
+            "description": "Visits"
+        }
+    ]
+}

@@ -1,0 +1,47 @@
+name: CI - Gestion Garage
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'gestion-garage/**'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'gestion-garage/**'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    # Backend Build
+    - name: Set up JDK 21
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: 'maven'
+        cache-dependency-path: 'gestion-garage/backend/pom.xml'
+
+    - name: Build Backend with Maven
+      working-directory: gestion-garage/backend
+      run: mvn clean package -DskipTests
+
+    # Frontend Build and Test
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: 'gestion-garage/frontend/package-lock.json'
+
+    - name: Install Frontend Dependencies
+      working-directory: gestion-garage/frontend
+      run: npm ci
+
+    - name: Build Frontend
+      working-directory: gestion-garage/frontend
+      run: npm run build -- --configuration production

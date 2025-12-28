@@ -1,0 +1,267 @@
+{
+  "LOGIN": {
+    "TITLE": "تسجيل الدخول",
+    "USERNAME": "اسم المستخدم",
+    "PASSWORD": "كلمة المرور",
+    "BUTTON": "دخول",
+    "ERROR": "بيانات الاعتماد غير صالحة (admin / admin)",
+    "LANGUAGE": "اللغة"
+  },
+  "NAV": {
+    "DASHBOARD": "لوحة القيادة",
+    "BY_CLIENT": "حسب العميل",
+    "BY_IMMAT": "حسب التسجيل",
+    "FICHES": "البطاقات التقنية",
+    "ADD_CLIENT": "عميل جديد",
+    "VERSION": "الإصدار",
+    "LOGOUT": "تسجيل الخروج"
+  },
+  "ACTIONS": {
+    "VIEW_PROFILE": "عرض الملف الشخصي",
+    "VIEW_FICHE": "عرض البطاقة",
+    "ADD_FICHE": "بطاقة جديدة",
+    "EDIT": "تعديل",
+    "DELETE": "حذف",
+    "VIEW_CLIENT_PROFILE": "عرض ملف العميل"
+  },
+  "DASHBOARD": {
+    "STATS": {
+      "TOTAL_CLIENTS": "إجمالي العملاء",
+      "ACTIVE_VEHICLES": "المركبات النشطة",
+      "TECH_SHEETS": "البطاقات التقنية"
+    },
+    "RECENT_FICHES": "البطاقات الأخيرة",
+    "TABLE": {
+      "VEHICLE": "المركبة",
+      "DATE_DIAG": "تاريخ التشخيص",
+      "SEVERITY": "الخطورة",
+      "STATUS": "الحالة",
+      "ACTION": "الإجراء"
+    },
+    "MANAGE_CLIENTS": "إدارة العملاء",
+    "EXPLORE_FLEET": "استكشاف الأسطول",
+    "VIEW_FICHES": "عرض البطاقات",
+    "NO_RECENT_FICHES": "لا توجد بطاقات تقنية حديثة لعرضها"
+  },
+  "SEARCH": {
+    "TITLE": "بحث",
+    "NEW_CLIENT": "عميل جديد",
+    "BY_CLIENT_TAB": "بحث حسب العميل",
+    "BY_VEHICLE_TAB": "بحث حسب المركبة",
+    "PLACEHOLDER_CLIENT": "الاسم، اللقب...",
+    "BUTTON_SEARCH": "بحث",
+    "CLIENT_RESULTS": "نتائج العملاء",
+    "VEHICLE_RESULTS": "نتائج المركبات",
+    "ASSOCIATED_VEHICLES": "المركبات المرتبطة:",
+    "PAGINATION": {
+      "SHOWING": "عرض",
+      "TO": "إلى",
+      "OF": "من",
+      "RESULTS": "نتائج"
+    },
+    "NO_RESULTS": "لم يتم العثور على نتائج."
+  },
+  "VISITE_LIST": {
+    "TITLE": "قائمة البطاقات التقنية",
+    "PLACEHOLDER_SEARCH": "البحث حسب رقم التسجيل، العلامة التجارية، الطراز أو العميل...",
+    "TABLE": {
+      "IMMAT": "رقم التسجيل",
+      "VEHICLE": "المركبة",
+      "DATE": "التاريخ",
+      "SEVERITY": "الخطورة",
+      "STATUS": "الحالة"
+    },
+    "NO_FICHES": "لم يتم العثور على بطاقات تقنية."
+  },
+  "VISITE_DETAIL": {
+    "BACK": "رجوع",
+    "TITLE": "البطاقة التقنية",
+    "ID": "المعرف",
+    "PRINT": "طباعة",
+    "MODIFY": "تعديل",
+    "DELETE": "حذف",
+    "STATUS": "الحالة",
+    "SEVERITY": "الخطورة",
+    "VEHICLE": "المركبة",
+    "DATE_DIAG": "تاريخ التشخيص",
+    "REPAIRED_ON": "تم الإصلاح في:",
+    "COMPONENTS_STATE": "حالة المكونات",
+    "ENGINE": "المحرك",
+    "BRAKES": "الفرامل",
+    "SUSPENSION": "التعليق",
+    "ELECTRIC": "الكهرباء",
+    "BODY": "الهيكل",
+    "GENERAL_STATE": "الحالة العامة",
+    "IDENTIFIED_PANNE": "الأعطال المحددة",
+    "DIAG_DESC": "وصف التشخيص",
+    "CHANGED_PARTS": "القطع المستبدلة",
+    "COSTS": "التكاليف",
+    "PARTS_COST": "القطع",
+    "LABOR_COST": "اليد العاملة",
+    "TOTAL": "الإجمالي",
+    "ESTIMATED_DURATION": "المدة المتوقعة:",
+    "MECHANIC_OBSERVATION": "ملاحظة الميكانيكي",
+    "FOOTNOTE_1": "تم إنشاء البطاقة التقنية تلقائيًا.",
+    "FOOTNOTE_2": "مستند للمعلومات فقط.",
+    "LOADING": "جاري تحميل البطاقة..."
+  },
+  "VEHICLE_DETAIL": {
+    "TITLE": "بطاقة المركبة",
+    "SUBTITLE": "التفاصيل وسجل الزيارات",
+    "OWNER": "المالك",
+    "GENERAL_INFO": "معلومات عامة",
+    "TYPE_FUEL": "النوع / الوقود",
+    "CHASSIS_YEAR": "الهيكل / السنة",
+    "POWER_COUNTER": "القوة الجبائية / العداد",
+    "HISTORY": "سجل البطاقات",
+    "NO_HISTORY": "لا توجد بطاقات تقنية مسجلة لهذه المركبة.",
+    "DETAILS": "التفاصيل",
+    "BACK": "رجوع",
+    "LOADING": "جاري التحميل...",
+    "CONFIRM_DELETE": "هل أنت متأكد من رغبتك في حذف هذه المركبة؟ سيتم حذف جميع زياراتها أيضًا."
+  },
+  "CLIENT_DETAIL": {
+    "TITLE": "ملف العميل",
+    "SUBTITLE": "إدارة المعلومات والأسطول",
+    "NO_CIN": "لا يوجد رقم بطاقة تعريف",
+    "PHONE": "الهاتف",
+    "EMAIL": "البريد الإلكتروني",
+    "ADDRESS": "العنوان",
+    "NO_ADDRESS": "لم يتم تقديم عنوان",
+    "ASSOCIATED_VEHICLES": "المركبات المرتبطة",
+    "ADD_VEHICLE": "+ إضافة مركبة",
+    "NO_VEHICLES": "لا توجد مركبات مسجلة لهذا العميل.",
+    "LOADING": "جاري تحميل العميل...",
+    "MODIFY": "تعديل",
+    "DELETE": "حذف",
+    "BACK": "رجوع",
+    "CONFIRM_DELETE": "هل أنت متأكد من رغبتك في حذف هذا العميل؟ سيتم حذف جميع مركباته وزياراته أيضًا."
+  },
+  "CLIENT_FORM": {
+    "TITLE_ADD": "إضافة عميل جديد",
+    "TITLE_EDIT": "تعديل العميل",
+    "CANCEL": "إلغاء",
+    "NOM": "الاسم العائلي",
+    "PRENOM": "الاسم الشخصي",
+    "CIN": "رقم بطاقة التعريف",
+    "PHONE": "الهاتف",
+    "EMAIL": "البريد الإلكتروني",
+    "ADDRESS": "العنوان",
+    "SAVE": "حفظ العميل"
+  },
+  "VEHICLE_FORM": {
+    "TITLE_ADD": "إضافة مركبة",
+    "TITLE_EDIT": "تعديل المركبة",
+    "FOR": "تسجيل لـ:",
+    "BRAND": "العلامة التجارية",
+    "MODEL": "الطراز",
+    "TYPE": "نوع المركبة",
+    "FUEL": "الوقود",
+    "YEAR": "سنة التسجيل",
+    "CHASSIS": "رقم الهيكل",
+    "POWER": "القوة الجبائية (CV)",
+    "SAVE": "حفظ المركبة",
+    "TYPES": {
+      "TOURISME": "سياحية",
+      "UTILITAIRE": "نفعية",
+      "4X4": "دفع رباعي",
+      "CAMIONNETTE": "شاحنة صغيرة"
+    },
+    "FUELS": {
+      "DIESEL": "ديزل",
+      "ESSENCE": "بنزين",
+      "HYBRIDE": "هجين",
+      "ELECTRIQUE": "كهربائي"
+    }
+  },
+  "VISITE_FORM": {
+    "TITLE_ADD": "بطاقة تقنية جديدة",
+    "TITLE_EDIT": "تعديل البطاقة",
+    "SECTION_1": "1. معلومات أساسية",
+    "KM": "المسافة المقطوعة",
+    "SEVERITY": "الخطورة",
+    "REPARABLE": "قابلة للإصلاح",
+    "SECTION_2": "2. حالة المكونات",
+    "SECTION_3": "3. الأعطال المحددة",
+     "ADD_FAULT": "إضافة عطل...",
+    "SELECT_FAULT": "اختر عطلاً",
+    "DIAG_DESC_LABEL": "وصف التشخيص",
+    "DIAG_DESC_PLACEHOLDER": "صف التشخيص...",
+    "SECTION_4": "4. القطع المستبدلة",
+    "ADD_PART": "إضافة قطعة...",
+    "SECTION_5": "5. التكاليف والمدة",
+    "PARTS_COST": "تكلفة القطع (درهم)",
+    "LABOR_COST": "تكلفة اليد العاملة (درهم)",
+    "DURATION": "المدة (ساعات)",
+    "SECTION_6": "6. الحالة النهائية",
+    "OBSERVATION_LABEL": "ملاحظة الميكانيكي",
+    "OBSERVATION_PLACEHOLDER": "ملاحظات وتنبيهات...",
+    "VALIDATE": "تحقق من البطاقة",
+    "CANCEL": "إلغاء"
+  },
+  "COMMON": {
+    "STATUS": {
+      "EN_COURS": "قيد المعالجة",
+      "REPARE": "تم الإصلاح",
+      "A_REVOIR": "للمراجعة",
+      "NON_REPARABLE": "غير قابل للإصلاح"
+    },
+    "SEVERITY": {
+      "MINEURE": "بسيطة",
+      "MAJEURE": "كبيرة",
+      "CRITIQUE": "حرجة",
+      "NA": "غير متوفر"
+    },
+    "ETAT": {
+      "BON": "جيد",
+      "MOYEN": "متوسط",
+      "MAUVAIS": "سيء"
+    },
+    "YES": "نعم",
+    "NO": "لا",
+    "ERROR_DELETE": "خطأ أثناء الحذف",
+    "ERROR_SAVE": "خطأ أثناء الحفظ",
+    "ERROR_FETCH": "خطأ أثناء استرداد البيانات",
+    "VERSION": "الإصدار",
+    "PAGINATION": {
+      "PREVIOUS": "السابق",
+      "NEXT": "التالي"
+    },
+    "FAULTS": {
+      "PANNE_MOTEUR": "عطل في المحرك",
+      "FUITE_HUILE": "تسرب زيت",
+      "USURE_FREINS": "تآكل المكابح",
+      "PROBLEME_SUSPENSION": "مشكلة في نظام التعليق",
+      "DEFAUT_ELECTRIQUE": "عطل كهربائي",
+      "CORROSION_CHASSIS": "تآكل الهيكل",
+      "PNEUMATIQUES_USES": "إطارات مهترئة",
+      "EMBRAYAGE_FATIGUE": "القابض مهترئ",
+      "BATTERIE_FAIBLE": "بطارية ضعيفة",
+      "SYSTEME_ECHAPPEMENT": "نظام العادم",
+      "ECLAIRAGE_DEFECTUEUX": "إضاءة معيبة",
+      "DIRECTION_ASSISTEE": "نظام التوجيه",
+      "REFROIDISSEMENT_MOTEUR": "تبريد المحرك",
+      "FREIN_A_MAIN_FAIBLE": "فرامل اليد ضعيفة"
+    },
+    "PARTS": {
+      "PLAQUETTES_FREIN": "وسادات الفرامل",
+      "DISQUES_FREIN": "أقراص الفرامل",
+      "FILTRE_HUILE": "فلتر الزيت",
+      "FILTRE_AIR": "فلتر الهواء",
+      "FILTRE_HABITACLE": "فلتر المقصورة",
+      "BOUGIES_ALLUMAGE": "شمعات الاحتراق",
+      "KIT_DISTRIBUTION": "مجموعة التوقيت",
+      "POMPE_A_EAU": "مضخة الماء",
+      "AMORTISSEURS_AV": "مساعدات أمامية",
+      "AMORTISSEURS_AR": "مساعدات خلفية",
+      "BATTERIE": "بطارية",
+      "JOINTS_SPY": "موانع تسرب الزيت",
+      "COURROIE_ACCESSOIRE": "حزام الملحقات",
+      "LIQUIDE_REFROIDISSEMENT": "سائل التبريد",
+      "LIQUIDE_FREIN": "سائل الفرامل",
+      "HUILE_MOTEUR": "زيت المحرك",
+      "PNEUMATIQUES": "إطارات",
+      "ESSUIE_GLACES": "مساحات الزجاج"
+    }
+  }
+}

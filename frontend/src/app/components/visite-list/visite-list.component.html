@@ -1,0 +1,109 @@
+<div class="px-4 py-6 sm:px-0">
+    <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center gap-4">
+            <div class="p-3 bg-purple-600 rounded-2xl shadow-xl shadow-purple-100">
+                <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+            </div>
+            <h1 class="text-3xl font-black text-gray-900 tracking-tight">{{ 'VISITE_LIST.TITLE' | translate }}</h1>
+        </div>
+        <a *ngIf="isAdmin" [routerLink]="['/search']" [queryParams]="{type: 'vehicule'}" class="inline-flex items-center p-3 border border-transparent rounded-2xl shadow-xl shadow-emerald-200 text-white bg-emerald-600 hover:bg-emerald-700 transition-all transform hover:scale-110" title="{{ 'ACTIONS.ADD_FICHE' | translate }}">
+            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+        </a>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="mb-8">
+        <div class="flex gap-4">
+            <input 
+                [(ngModel)]="query" 
+                (keyup.enter)="onSearch()"
+                type="text" 
+                [placeholder]="'VISITE_LIST.PLACEHOLDER_SEARCH' | translate" 
+                class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-3 border">
+            <button 
+                (click)="onSearch()"
+                class="inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                {{ 'SEARCH.BUTTON_SEARCH' | translate }}
+            </button>
+        </div>
+    </div>
+
+    <!-- Results Table -->
+    <div class="bg-white shadow overflow-hidden sm:rounded-2xl border border-gray-100">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{{ 'VISITE_LIST.TABLE.IMMAT' | translate }}</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{{ 'VISITE_LIST.TABLE.VEHICLE' | translate }}</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{{ 'VISITE_LIST.TABLE.DATE' | translate }}</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{{ 'VISITE_LIST.TABLE.SEVERITY' | translate }}</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{{ 'VISITE_LIST.TABLE.STATUS' | translate }}</th>
+                    <th scope="col" class="relative px-6 py-3"><span class="sr-only">Actions</span></th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                <tr *ngFor="let fiche of fiches" class="hover:bg-blue-50/50 transition-colors">
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-black text-blue-600 uppercase">{{ fiche.immatriculation || 'N/A' }}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">{{ fiche.marque }} {{ fiche.modele }}</div>
+                        <div class="text-xs text-gray-500">{{ fiche.kilometrage | number }} km</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-500">{{ fiche.dateDiagnostic }}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span [class]="getGraviteClass(fiche.gravite || '')" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">
+                            {{ (fiche.gravite ? 'COMMON.SEVERITY.' + fiche.gravite : 'COMMON.SEVERITY.NA') | translate }}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span [class]="getStatutClass(fiche.statut || '')" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">
+                            {{ getStatutLabel(fiche.statut || '') | translate }}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex items-center justify-end gap-3">
+                        <a [routerLink]="['/fiches', fiche.id]" class="text-blue-600 hover:text-white p-2 hover:bg-blue-600 rounded-xl transition-all shadow-sm transform hover:scale-110" title="{{ 'ACTIONS.VIEW_FICHE' | translate }}">
+                            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                        </a>
+                        <ng-container *ngIf="isAdmin && fiche.vehicule && fiche.vehicule.id">
+                             <a [routerLink]="['/fiches/new', fiche.vehicule.id]" [queryParams]="{id: fiche.id}" class="text-indigo-600 hover:text-white p-2 hover:bg-indigo-600 rounded-xl transition-all shadow-sm transform hover:scale-110" title="{{ 'ACTIONS.EDIT' | translate }}">
+                                <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                             </a>
+                        </ng-container>
+                        <button *ngIf="isAdmin" (click)="deleteFiche(fiche.id!)" class="text-red-600 hover:text-white p-2 hover:bg-red-600 rounded-xl transition-all shadow-sm transform hover:scale-110" title="{{ 'ACTIONS.DELETE' | translate }}">
+                            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- No results -->
+        <div *ngIf="fiches.length === 0" class="text-center py-10 text-gray-500">
+            {{ 'VISITE_LIST.NO_FICHES' | translate }}
+        </div>
+
+        <!-- Pagination -->
+        <div class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between" *ngIf="totalPages > 1">
+            <div class="text-sm text-gray-700">
+                {{ 'SEARCH.PAGINATION.SHOWING' | translate }} <span class="font-black text-blue-600">{{ currentPage * pageSize + 1 }}</span> {{ 'SEARCH.PAGINATION.TO' | translate }} <span class="font-black text-blue-600">{{ (currentPage + 1) * pageSize > totalElements ? totalElements : (currentPage + 1) * pageSize }}</span> {{ 'SEARCH.PAGINATION.OF' | translate }} <span class="font-black text-blue-600">{{ totalElements }}</span>
+            </div>
+            <div class="flex gap-2">
+                <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 0" class="px-4 py-2 border border-gray-200 rounded-xl bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-30 transition-all">
+                    {{ 'COMMON.PAGINATION.PREVIOUS' | translate }}
+                </button>
+                <div class="px-4 py-2 bg-blue-50 text-blue-600 rounded-xl font-black text-sm">
+                    {{ currentPage + 1 }} / {{ totalPages }}
+                </div>
+                <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages - 1" class="px-4 py-2 border border-gray-200 rounded-xl bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-30 transition-all">
+                    {{ 'COMMON.PAGINATION.NEXT' | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

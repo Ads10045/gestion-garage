@@ -1,0 +1,268 @@
+{
+  "LOGIN": {
+    "TITLE": "Login",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "BUTTON": "Sign In",
+    "ERROR": "Invalid credentials (admin / admin)",
+    "LANGUAGE": "Language"
+  },
+  "NAV": {
+    "DASHBOARD": "Dashboard",
+    "BY_CLIENT": "By Client",
+    "BY_IMMAT": "By Registration",
+    "FICHES": "Technical Sheets",
+    "ADD_CLIENT": "New Client",
+    "LOGOUT": "Logout"
+  },
+  "ACTIONS": {
+    "VIEW_PROFILE": "View Profile",
+    "VIEW_FICHE": "View Fiche",
+    "ADD_FICHE": "New Fiche",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "VIEW_CLIENT_PROFILE": "View Client Profile"
+  },
+  "DASHBOARD": {
+    "STATS": {
+      "TOTAL_CLIENTS": "Total Clients",
+      "ACTIVE_VEHICLES": "Active Vehicles",
+      "TECH_SHEETS": "Technical Sheets"
+    },
+    "RECENT_FICHES": "Recent Fiches",
+    "TABLE": {
+      "VEHICLE": "Vehicle",
+      "DATE_DIAG": "Diagnostic Date",
+      "SEVERITY": "Severity",
+      "STATUS": "Status",
+      "ACTION": "Action"
+    },
+    "MANAGE_CLIENTS": "Manage Clients",
+    "EXPLORE_FLEET": "Explore Fleet",
+    "VIEW_FICHES": "View Fiches",
+    "NO_RECENT_FICHES": "No recent fiches to display"
+  },
+  "SEARCH": {
+    "TITLE": "Search",
+    "NEW_CLIENT": "New Client",
+    "BY_CLIENT_TAB": "Search by Client",
+    "BY_VEHICLE_TAB": "Search by Vehicle",
+    "PLACEHOLDER_CLIENT": "Name, First Name...",
+    "BUTTON_SEARCH": "Search",
+    "CLIENT_RESULTS": "Client Results",
+    "VEHICLE_RESULTS": "Vehicle Results",
+    "ASSOCIATED_VEHICLES": "Associated vehicles:",
+    "PAGINATION": {
+      "SHOWING": "Showing",
+      "TO": "to",
+      "OF": "of",
+      "RESULTS": "results"
+    },
+    "NO_RESULTS": "No results found."
+  },
+  "VISITE_LIST": {
+    "TITLE": "Technical Fiches List",
+    "PLACEHOLDER_SEARCH": "Search by registration, brand, model or client...",
+    "TABLE": {
+      "IMMAT": "Registration",
+      "VEHICLE": "Vehicle",
+      "DATE": "Date",
+      "SEVERITY": "Severity",
+      "STATUS": "Status"
+    },
+    "NO_FICHES": "No technical fiches found."
+  },
+  "VISITE_DETAIL": {
+    "BACK": "BACK",
+    "TITLE": "Technical Fiche",
+    "ID": "ID",
+    "PRINT": "Print",
+    "MODIFY": "Modify",
+    "DELETE": "Delete",
+    "STATUS": "Status",
+    "SEVERITY": "Severity",
+    "VEHICLE": "Vehicle",
+    "DATE_DIAG": "Diagnostic Date",
+    "REPAIRED_ON": "Repaired on:",
+    "COMPONENTS_STATE": "Components State",
+    "ENGINE": "Engine",
+    "BRAKES": "Brakes",
+    "SUSPENSION": "Suspension",
+    "ELECTRIC": "Electric",
+    "BODY": "Body",
+    "GENERAL_STATE": "General State",
+    "IDENTIFIED_PANNE": "Identified Faults",
+    "DIAG_DESC": "Diagnostic Description",
+    "CHANGED_PARTS": "Changed Parts",
+    "COSTS": "Costs",
+    "PARTS_COST": "Parts",
+    "LABOR_COST": "Labor",
+    "TOTAL": "Total",
+    "ESTIMATED_DURATION": "Estimated duration:",
+    "MECHANIC_OBSERVATION": "Mechanic's Observation",
+    "FOOTNOTE_1": "Technical fiche generated automatically.",
+    "FOOTNOTE_2": "Document for information only.",
+    "LOADING": "Loading fiche..."
+  },
+  "VEHICLE_DETAIL": {
+    "TITLE": "Vehicle Fiche",
+    "SUBTITLE": "Details and visit history",
+    "OWNER": "Owner",
+    "GENERAL_INFO": "General Information",
+    "TYPE_FUEL": "Type / Fuel",
+    "CHASSIS_YEAR": "Chassis / Year",
+    "POWER_COUNTER": "Fiscal Power / Counter",
+    "HISTORY": "Fiches History",
+    "NO_HISTORY": "No technical fiches recorded for this vehicle.",
+    "DETAILS": "Details",
+    "BACK": "Back",
+    "LOADING": "Loading...",
+    "CONFIRM_DELETE": "Are you sure you want to delete this vehicle? All its visits will also be deleted."
+  },
+  "CLIENT_DETAIL": {
+    "TITLE": "Client Profile",
+    "SUBTITLE": "Information and fleet management",
+    "NO_CIN": "No CIN",
+    "PHONE": "Phone",
+    "EMAIL": "Email",
+    "ADDRESS": "Address",
+    "NO_ADDRESS": "No address provided",
+    "ASSOCIATED_VEHICLES": "Associated Vehicles",
+    "ADD_VEHICLE": "+ Add Vehicle",
+    "NO_VEHICLES": "No vehicles registered for this client.",
+    "LOADING": "Loading client...",
+    "MODIFY": "Modify",
+    "DELETE": "Delete",
+    "BACK": "Back",
+    "CONFIRM_DELETE": "Are you sure you want to delete this client? All their vehicles and visits will also be deleted."
+  },
+  "CLIENT_FORM": {
+    "TITLE_ADD": "Add New Client",
+    "TITLE_EDIT": "Modify Client",
+    "CANCEL": "Cancel",
+    "NOM": "Name",
+    "PRENOM": "First Name",
+    "CIN": "CIN",
+    "PHONE": "Phone",
+    "EMAIL": "Email",
+    "ADDRESS": "Address",
+    "SAVE": "Save Client"
+  },
+  "VEHICLE_FORM": {
+    "TITLE_ADD": "Add a Vehicle",
+    "TITLE_EDIT": "Modify Vehicle",
+    "FOR": "Registration for:",
+    "BRAND": "Brand",
+    "MODEL": "Model",
+    "TYPE": "Vehicle Type",
+    "FUEL": "Fuel",
+    "YEAR": "Registration Year",
+    "CHASSIS": "Chassis Number",
+    "POWER": "Fiscal Power (CV)",
+    "SAVE": "Save Vehicle",
+    "TYPES": {
+      "TOURISME": "Passenger Car",
+      "UTILITAIRE": "Commercial Vehicle",
+      "4X4": "4x4",
+      "CAMIONNETTE": "Van"
+    },
+    "FUELS": {
+      "DIESEL": "Diesel",
+      "ESSENCE": "Petrol",
+      "HYBRIDE": "Hybrid",
+      "ELECTRIQUE": "Electric"
+    }
+  },
+  "VISITE_FORM": {
+    "TITLE_ADD": "New Technical Fiche",
+    "TITLE_EDIT": "Modify Fiche",
+    "SECTION_1": "1. Basic information",
+    "KM": "Mileage",
+    "SEVERITY": "Severity",
+    "REPARABLE": "Reparable",
+    "SECTION_2": "2. Components State",
+    "SECTION_3": "3. Identified Faults",
+     "ADD_FAULT": "Add a fault...",
+    "SELECT_FAULT": "Select a fault",
+    "DIAG_DESC_LABEL": "Diagnostic Description",
+    "DIAG_DESC_PLACEHOLDER": "Describe the diagnostic...",
+    "SECTION_4": "4. Changed Parts",
+     "ADD_PART": "Add a part...",
+    "SELECT_PART": "Select a part",
+    "SECTION_5": "5. Costs & Duration",
+    "PARTS_COST": "Parts Cost (DH)",
+    "LABOR_COST": "Labor Cost (DH)",
+    "DURATION": "Duration (hours)",
+    "SECTION_6": "6. Final Status",
+    "OBSERVATION_LABEL": "Mechanic's Observation",
+    "OBSERVATION_PLACEHOLDER": "Notes and observations...",
+    "VALIDATE": "Validate Fiche",
+    "CANCEL": "Cancel"
+  },
+  "COMMON": {
+    "STATUS": {
+      "EN_COURS": "In Progress",
+      "REPARE": "Repaired",
+      "A_REVOIR": "To Review",
+      "NON_REPARABLE": "Beyond Repair"
+    },
+    "SEVERITY": {
+      "MINEURE": "Minor",
+      "MAJEURE": "Major",
+      "CRITIQUE": "Critical",
+      "NA": "N/A"
+    },
+    "ETAT": {
+        "BON": "Good",
+        "MOYEN": "Fair",
+        "MAUVAIS": "Bad"
+    },
+    "YES": "Yes",
+    "NO": "No",
+    "ERROR_DELETE": "Error during deletion",
+    "ERROR_SAVE": "Error during saving",
+    "ERROR_FETCH": "Error during data retrieval",
+    "VERSION": "Version",
+    "PAGINATION": {
+      "PREVIOUS": "Previous",
+      "NEXT": "Next"
+    },
+    "FAULTS": {
+      "PANNE_MOTEUR": "Engine Failure",
+      "FUITE_HUILE": "Oil Leak",
+      "USURE_FREINS": "Brake Wear",
+      "PROBLEME_SUSPENSION": "Suspension Problem",
+      "DEFAUT_ELECTRIQUE": "Electrical Fault",
+      "CORROSION_CHASSIS": "Chassis Corrosion",
+      "PNEUMATIQUES_USES": "Worn Tires",
+      "EMBRAYAGE_FATIGUE": "Worn Clutch",
+      "BATTERIE_FAIBLE": "Weak Battery",
+      "SYSTEME_ECHAPPEMENT": "Exhaust System",
+      "ECLAIRAGE_DEFECTUEUX": "Defective Lighting",
+      "DIRECTION_ASSISTEE": "Power Steering",
+      "REFROIDISSEMENT_MOTEUR": "Engine Cooling",
+      "FREIN_A_MAIN_FAIBLE": "Weak Handbrake"
+    },
+    "PARTS": {
+      "PLAQUETTES_FREIN": "Brake Pads",
+      "DISQUES_FREIN": "Brake Discs",
+      "FILTRE_HUILE": "Oil Filter",
+      "FILTRE_AIR": "Air Filter",
+      "FILTRE_HABITACLE": "Cabin Filter",
+      "BOUGIES_ALLUMAGE": "Spark Plugs",
+      "KIT_DISTRIBUTION": "Timing Kit",
+      "POMPE_A_EAU": "Water Pump",
+      "AMORTISSEURS_AV": "Front Shock Absorbers",
+      "AMORTISSEURS_AR": "Rear Shock Absorbers",
+      "BATTERIE": "Battery",
+      "JOINTS_SPY": "Oil Seals",
+      "COURROIE_ACCESSOIRE": "Accessory Belt",
+      "LIQUIDE_REFROIDISSEMENT": "Coolant",
+      "LIQUIDE_FREIN": "Brake Fluid",
+      "HUILE_MOTEUR": "Engine Oil",
+      "PNEUMATIQUES": "Tires",
+      "ESSUIE_GLACES": "Wiper Blades"
+    }
+  }
+}
+
