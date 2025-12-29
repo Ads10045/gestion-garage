@@ -99,7 +99,7 @@ export interface PageResponse<T> {
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:8085/api';
+  private apiUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) { }
 

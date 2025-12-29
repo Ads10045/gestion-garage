@@ -1,0 +1,121 @@
+@media print {
+    /* Remove all margins and padding from body */
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Ensure single page */
+    @page {
+        size: A4;
+        margin: 1cm;
+    }
+
+    /* Optimize container for print */
+    .max-w-5xl {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Reduce padding in print mode */
+    .px-8 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .py-6 {
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+    }
+
+    .py-4 {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    /* Compact spacing */
+    .gap-8 {
+        gap: 1rem !important;
+    }
+
+    .space-y-2 > * + * {
+        margin-top: 0.25rem !important;
+    }
+
+    /* Remove shadows and borders that waste ink */
+    .shadow-lg,
+    .shadow-xl {
+        box-shadow: none !important;
+    }
+
+    /* Ensure no page breaks inside important sections */
+    .bg-white {
+        page-break-inside: avoid;
+    }
+
+    /* Compact text sizes for print */
+    .text-3xl {
+        font-size: 1.5rem !important;
+    }
+
+    .text-2xl {
+        font-size: 1.25rem !important;
+    }
+
+    .text-xl {
+        font-size: 1.125rem !important;
+    }
+
+    /* Reduce component status grid spacing */
+    .grid-cols-3 {
+        gap: 0.5rem !important;
+    }
+
+    /* Compact header */
+    .border-b-4 {
+        border-bottom-width: 2px !important;
+    }
+
+    /* Optimize colored lines for print */
+    .w-12 {
+        width: 2rem !important;
+    }
+
+    /* Ensure footer stays at bottom */
+    .bg-gray-900 {
+        background-color: #1f2937 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Preserve colors for status indicators */
+    .bg-green-500,
+    .bg-yellow-500,
+    .bg-red-500,
+    .bg-green-100,
+    .bg-yellow-100,
+    .bg-red-100,
+    .text-green-600,
+    .text-yellow-600,
+    .text-red-600,
+    .border-red-600 {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Compact margins between sections */
+    .mb-3 {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .mt-4 {
+        margin-top: 0.75rem !important;
+    }
+
+    /* Reduce rounded corners for cleaner print */
+    .rounded-lg,
+    .rounded-xl {
+        border-radius: 0.25rem !important;
+    }
+}

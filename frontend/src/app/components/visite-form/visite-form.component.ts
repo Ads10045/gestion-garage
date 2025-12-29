@@ -17,7 +17,7 @@ export class FicheFormComponent implements OnInit {
     vehicule?: Vehicule;
 
     fiche: FicheTechnique = {
-        dateDiagnostic: new Date().toISOString().split('T')[0],
+        dateDiagnostic: new Date().toISOString().slice(0, 16), // Format: YYYY-MM-DDTHH:mm
         kilometrage: 0,
         pannes: [],
         piecesChangees: [],
@@ -74,7 +74,14 @@ export class FicheFormComponent implements OnInit {
         const id = this.route.snapshot.queryParams['id'];
         if (id) {
             this.api.getFiche(Number(id)).subscribe({
-                next: (data: FicheTechnique) => this.fiche = data,
+                next: (data: FicheTechnique) => {
+                    this.fiche = data;
+                    // Convert date to datetime-local format if it exists
+                    if (this.fiche.dateDiagnostic) {
+                        const date = new Date(this.fiche.dateDiagnostic);
+                        this.fiche.dateDiagnostic = date.toISOString().slice(0, 16);
+                    }
+                },
                 error: (err) => console.error('Error fetching fiche for edit:', err)
             });
         }

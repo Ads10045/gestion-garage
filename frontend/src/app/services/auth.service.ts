@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ export class AuthService {
   private loggedIn = new BehaviorSubject<boolean>(this.checkToken());
   private userRole = new BehaviorSubject<string | null>(localStorage.getItem('user_role'));
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   private checkToken(): boolean {
     return !!localStorage.getItem('auth_token');
@@ -30,23 +32,23 @@ export class AuthService {
     return this.userRole.value === 'ADMIN';
   }
 
-  login(username: string, password: string): Observable<boolean> {
-    let role: string | null = null;
-
-    if (username === 'admin' && password === 'admin') {
-      role = 'ADMIN';
-    } else if (username === 'user' && password === 'user') {
-      role = 'USER';
-    }
-
-    if (role) {
-      localStorage.setItem('auth_token', 'fake-jwt-token');
-      localStorage.setItem('user_role', role);
-      this.userRole.next(role);
-      this.loggedIn.next(true);
-      return of(true);
-    }
-    return of(false);
+  login(email: string, password: string): Observable<boolean> {
+    return this.http.post<any>('http://localhost:3000/api/auth/login', { email, password })
+      .pipe(
+        map(response => {
+          if (response && response.access_token) {
+            localStorage.setItem('auth_token', response.access_token);
+            // For now, assuming admin if email contains admin or role is returned
+            const role = email.includes('admin') ? 'ADMIN' : 'USER';
+            localStorage.setItem('user_role', role);
+            this.userRole.next(role);
+            this.loggedIn.next(true);
+            return true;
+          }
+          return false;
+        }),
+        catchError(() => of(false))
+      );
   }
 
   logout(): void {
