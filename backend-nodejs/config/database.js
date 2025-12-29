@@ -11,8 +11,10 @@ const sequelize = new Sequelize(
         dialect: 'postgres',
         logging: false,
         dialectOptions: {
-            // Optional: for search_path if needed
-            // options: "-c search_path=public"
+            ssl: process.env.DB_HOST && process.env.DB_HOST.includes('neon.tech') ? {
+                require: true,
+                rejectUnauthorized: false
+            } : false
         }
     }
 );
