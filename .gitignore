@@ -30,6 +30,7 @@ target/
 node_modules/
 dist/
 npm-debug.log
+package-lock.json
 
 # IDEs
 .idea/
@@ -39,3 +40,26 @@ npm-debug.log
 
 # Angular
 .angular/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+backend-nodejs/.env
+
+# Database backups
+*.dump
+backup_*.json
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Build outputs
+build/
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+.nyc_output/
