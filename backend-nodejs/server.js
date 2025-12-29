@@ -34,14 +34,21 @@ app.get('/', (req, res) => {
     res.json({ message: 'Backend Node.js is running' });
 });
 
-// Sync Database and Start Server
-sequelize.sync({ force: false }) // Set force: true to drop tables during dev if needed
+// Sync Database
+sequelize.sync({ force: false })
     .then(() => {
         console.log('Database connected and synced');
-        app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}`);
-        });
+        
+        // Only start server if not in Vercel environment
+        if (process.env.VERCEL !== '1') {
+            app.listen(PORT, () => {
+                console.log(`Server is running on port ${PORT}`);
+            });
+        }
     })
     .catch((err) => {
         console.error('Unable to connect to the database:', err);
     });
+
+// Export app for Vercel
+module.exports = app;
