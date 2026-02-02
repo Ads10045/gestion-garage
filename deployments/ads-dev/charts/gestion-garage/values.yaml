@@ -104,17 +104,17 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 # Additional volumes on the output Deployment definition.
-volumes: []
-# - name: foo
-#   secret:
-#     secretName: mysecret
-#     optional: false
+volumes:
+  - name: frontend-dist
+    hostPath:
+      path: /Users/younessabach/Documents/dev/workspace-IA/gestion-garage/frontend/dist/frontend/browser
+      type: Directory
 
 # Additional volumeMounts on the output Deployment definition.
-volumeMounts: []
-# - name: foo
-#   mountPath: "/etc/foo"
-#   readOnly: true
+volumeMounts:
+  - name: frontend-dist
+    mountPath: /usr/share/nginx/html
+    readOnly: true
 
 nodeSelector: {}
 

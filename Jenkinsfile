@@ -18,8 +18,8 @@ pipeline {
             steps {
                 script {
                     echo "Lancement de l'analyse statique..."
-                    // On utilise le mode manuel et on ajoute sonar.java.binaries=. pour éviter l'erreur sur les fichiers Java
-                    sh "sonar-scanner -Dsonar.projectKey=gestion-garage -Dsonar.sources=. -Dsonar.host.url=http://host.docker.internal:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.java.binaries=."
+                    // On utilise le mode manuel, on ajoute sonar.java.binaries=. et on exclut les templates Helm
+                    sh "sonar-scanner -Dsonar.projectKey=gestion-garage -Dsonar.sources=. -Dsonar.host.url=http://host.docker.internal:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.java.binaries=. -Dsonar.exclusions=deployments/**"
                 }
             }
         }
