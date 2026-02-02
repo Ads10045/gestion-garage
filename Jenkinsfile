@@ -35,9 +35,10 @@ pipeline {
             steps {
                 echo "Déploiement en cours sur le namespace 'ads-dev'..."
                 // Utilisation des fichiers Helm clonés depuis GitHub
+                // Utilisation des fichiers Helm renommés
                 sh """
-                helm upgrade --install ads-app ./deployments/ads-dev/charts/ads-app \
-                    --namespace ads-dev \
+                helm upgrade --install gestion-garage ./deployments/ads-dev/charts/gestion-garage \
+                    --namespace gestion-garage --create-namespace \
                     --set image.tag=${env.BUILD_NUMBER}
                 """
             }
