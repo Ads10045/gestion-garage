@@ -29,6 +29,8 @@ target/
 # NPM
 node_modules/
 dist/
+.npm-cache/
+**/.npm-cache/
 npm-debug.log
 package-lock.json
 
