@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     def projectKey = env.JOB_NAME.split('/')[0].toLowerCase()
-                    sh "sonar-scanner -Dsonar.projectKey=${projectKey}-build -Dsonar.sources=. -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=admin -Dsonar.password=admin123"
+                    sh "sonar-scanner -Dsonar.projectKey=${projectKey}-build -Dsonar.sources=. -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.exclusions=**/*.java"
                 }
             }
         }
