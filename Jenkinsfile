@@ -39,14 +39,20 @@ pipeline {
                 expression { params.ONLY_BUILD == false }
             }
             steps {
-                echo "Récupération des configurations Helm (helm-dev)..."
-                dir('helm-configs') {
-                    checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[credentialsId: 'github-pat', url: 'https://github.com/Ads10045/helm-dev']]])
+                echo "Récupération des configurations Helm (Monorepo)..."
+                dir('helm') {
+                    checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[credentialsId: 'github-pat', url: 'https://github.com/Ads10045/helm']]])
                 }
                 
                 script {
                     def appName = env.JOB_NAME.split('/')[0].toLowerCase()
-                    sh "helm upgrade --install ${appName} ./helm-configs/${appName} --namespace ${appName} --create-namespace --set image.tag=latest -f ./helm-configs/${appName}/values-${params.ENVIRONMENT}.yaml"
+                    sh """
+                        helm upgrade --install ${appName} ./helm/helm-main/${appName} \
+                        --namespace ${appName} --create-namespace \
+                        --set image.tag=latest \
+                        -f ./helm/helm-dev/${appName}/application-variable.properties \
+                        -f ./helm/helm-secret/${appName}/${appName}.secret
+                    """
                 }
             }
         }
