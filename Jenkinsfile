@@ -3,6 +3,7 @@ pipeline {
 
     parameters {
         string(name: 'VERSION', defaultValue: '1.0.0-SNAPSHOT', description: 'Version de la release ou snapshot')
+        choice(name: 'ENVIRONMENT', choices: ['dev', 'prod'], description: 'Environnement de déploiement')
         booleanParam(name: 'ONLY_BUILD', defaultValue: false, description: 'Si coché, effectue uniquement le build et l\'analyse Sonar (pas de déploiement)')
     }
 
@@ -45,7 +46,7 @@ pipeline {
                 
                 script {
                     def appName = env.JOB_NAME.split('/')[0].toLowerCase()
-                    sh "helm upgrade --install ${appName} ./helm-configs/${appName} --namespace ${appName} --create-namespace --set image.tag=latest"
+                    sh "helm upgrade --install ${appName} ./helm-configs/${appName} --namespace ${appName} --create-namespace --set image.tag=latest -f ./helm-configs/${appName}/values-${params.ENVIRONMENT}.yaml"
                 }
             }
         }
